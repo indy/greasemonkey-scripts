@@ -23,12 +23,5 @@ function addStyleSheet(css) {
   head.appendChild(style);
 };
 
-var _ran;
-function init(x) {
-	if(_ran) return;
-	_ran=true;
+addStyleSheet("#entries.list .read .collapsed { background: #C2CFF1;}");
 
-	addStyleSheet("#entries.list .read .collapsed { background: #C2CFF1;}");
-}
-
-init();

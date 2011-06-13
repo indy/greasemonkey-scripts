@@ -10,6 +10,7 @@
 
 // greasemonkey version of http://gilesbowkett.blogspot.com/2011/06/how-to-make-twitters-web-client-suck.html
 
+
 function stylesheetNode(css) {
   var style = document.createElement("style");
   style.setAttribute("type","text/css");
@@ -24,14 +25,6 @@ function addStyleSheet(css) {
   head.appendChild(style);
 };
 
-var _intialized;
-function init(x) {
-	if(_intialized) return;
-	_intialized=true;
-
-	addStyleSheet(".trends-inner{ display: none }");
-	addStyleSheet("p.promo{ display: none }");
-	addStyleSheet(".user-rec-component{ display: none }");
-}
-
-init();
+addStyleSheet(".trends-inner{ display: none }");
+addStyleSheet("p.promo{ display: none }");
+addStyleSheet(".user-rec-component{ display: none }");

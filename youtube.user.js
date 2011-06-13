@@ -37,13 +37,5 @@ function removeRecommendedCrap() {
   }
 }
 
-var _ran;
-function init() {
-	if(_ran) return;
-	_ran=true;
-
-	addStyleSheet("#homepage-side-content { display: none;}");
-  removeRecommendedCrap();
-}
-
-init();
+addStyleSheet("#homepage-side-content { display: none;}");
+removeRecommendedCrap();
