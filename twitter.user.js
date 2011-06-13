@@ -8,8 +8,7 @@
 // @include        https://twitter.com/
 // ==/UserScript==
 
-// greasemonkey version of http://gilesbowkett.blogspot.com/2011/06/how-to-make-twitters-web-client-suck.html
-
+// http://gilesbowkett.blogspot.com/2011/06/how-to-make-twitters-web-client-suck.html
 
 function stylesheetNode(css) {
   var style = document.createElement("style");
@@ -18,13 +17,17 @@ function stylesheetNode(css) {
   return style;
 }
 
-function addStyleSheet(css) {
+function addStyleSheet() {
   var head = document.getElementsByTagName("head")[0];
+  var css = "";
+  for(i=0;i<arguments.length;i++){
+    css += arguments[i] + "\n";
+  }
   var style = stylesheetNode(css);
 
   head.appendChild(style);
 };
 
-addStyleSheet(".trends-inner{ display: none }");
-addStyleSheet("p.promo{ display: none }");
-addStyleSheet(".user-rec-component{ display: none }");
+addStyleSheet(".trends-inner{ display: none }",
+              "p.promo{ display: none }",
+              ".user-rec-component{ display: none }");
