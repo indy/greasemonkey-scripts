@@ -2,7 +2,7 @@
 // @name           Twitter Script
 // @author         Inderjit Gill ( http://indy.io | http://twitter.com/InderjitGill )
 // @namespace      indy.io
-// @version        0.0.1
+// @version        0.0.2
 // @description    Hides crap that Twitter shows by default
 // @include        http://twitter.com/
 // @include        https://twitter.com/
@@ -28,6 +28,5 @@ function addStyleSheet() {
   head.appendChild(style);
 };
 
-addStyleSheet(".trends-inner{ display: none }",
-              "p.promo{ display: none }",
-              ".user-rec-component{ display: none }");
+// Twitter's js code inserts a display:block if display:none is applied to .trends, but it's ok to add display:none to a div child of .trends
+addStyleSheet(".trends div { display: none }");
