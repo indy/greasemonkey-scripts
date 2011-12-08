@@ -2,7 +2,7 @@
 // @name           YouTube
 // @author         Inderjit Gill ( http://indy.io | http://twitter.com/InderjitGill )
 // @namespace      indy.io
-// @version        0.0.1
+// @version        0.0.2
 // @description    Removes the annoying recommendations panels from the front page
 // @include        http://www.youtube.com/*
 // ==/UserScript==
@@ -37,5 +37,5 @@ function removeRecommendedCrap() {
   }
 }
 
-addStyleSheet("#homepage-side-content { display: none;}");
+addStyleSheet("#video-sidebar { display: none;}");
 removeRecommendedCrap();
