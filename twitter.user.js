@@ -8,7 +8,13 @@
 // @include        https://twitter.com/
 // ==/UserScript==
 
-// http://gilesbowkett.blogspot.com/2011/06/how-to-make-twitters-web-client-suck.html
+/*
+  with thanks to:
+
+  https://github.com/splatcollision/Clean-Twitter-User-Stylesheet/blob/master/twitter_clean.css
+  http://gilesbowkett.blogspot.com/2011/06/how-to-make-twitters-web-client-suck.html
+
+*/
 
 function stylesheetNode(css) {
   var style = document.createElement("style");
