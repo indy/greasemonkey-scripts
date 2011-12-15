@@ -28,5 +28,12 @@ function addStyleSheet() {
   head.appendChild(style);
 };
 
-// Twitter's js code inserts a display:block if display:none is applied to .trends, but it's ok to add display:none to a div child of .trends
-addStyleSheet(".trends div { display: none }");
+/*
+  hides: recommended users, trends, the 'tweets' title
+*/
+addStyleSheet(
+  "[data-component-term=user_recommendations] { display: none !important;}",
+  "[data-component-term=trends] {display: none !important;}",
+  ".content-header h2 > .js-stream-title {display: none !important;}",
+  ".content-header > .header-inner {min-height: 5px !important;padding: 0 !important;}");
+
