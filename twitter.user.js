@@ -2,7 +2,7 @@
 // @name           Twitter Script
 // @author         Inderjit Gill ( http://indy.io | http://twitter.com/InderjitGill )
 // @namespace      indy.io
-// @version        0.0.2
+// @version        0.0.3
 // @description    Hides crap that Twitter shows by default
 // @include        http://twitter.com/
 // @include        https://twitter.com/
@@ -15,6 +15,7 @@
   http://gilesbowkett.blogspot.com/2011/06/how-to-make-twitters-web-client-suck.html
 
 */
+
 
 function stylesheetNode(css) {
   var style = document.createElement("style");
@@ -35,11 +36,12 @@ function addStyleSheet() {
 };
 
 /*
-  hides: recommended users, trends, the 'tweets' title
+  hides: recommended users, trends, promoted tweets, the 'tweets' title
 */
 addStyleSheet(
   "[data-component-term=user_recommendations] { display: none !important;}",
   "[data-component-term=trends] {display: none !important;}",
+  ".promoted-tweet {display: none !important;}",
   ".content-header h2 > .js-stream-title {display: none !important;}",
   ".content-header > .header-inner {min-height: 5px !important;padding: 0 !important;}");
 
