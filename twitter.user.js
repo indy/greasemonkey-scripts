@@ -2,8 +2,8 @@
 // @name           Twitter Script
 // @author         Inderjit Gill ( http://indy.io | http://twitter.com/InderjitGill )
 // @namespace      indy.io
-// @version        0.0.3
-// @description    Hides crap that Twitter shows by default
+// @version        0.0.4
+// @description    Hides cruft that Twitter shows by default
 // @include        http://twitter.com/
 // @include        https://twitter.com/
 // ==/UserScript==
@@ -16,32 +16,39 @@
 
 */
 
-
-function stylesheetNode(css) {
-  var style = document.createElement("style");
-  style.setAttribute("type","text/css");
-  style.innerHTML = css;
-  return style;
+function combineRules(rules) {
+  var css = "";
+  rules.forEach(function(r) {
+    css += r + "\n";
+  })
+  return css;
 }
 
-function addStyleSheet() {
+function addStyleSheet(rules) {
   var head = document.getElementsByTagName("head")[0];
-  var css = "";
-  for(i=0;i<arguments.length;i++){
-    css += arguments[i] + "\n";
-  }
-  var style = stylesheetNode(css);
-
+  var style = document.createElement("style");
+  style.setAttribute("type","text/css");
+  style.innerHTML = combineRules(rules);
   head.appendChild(style);
 };
 
-/*
-  hides: recommended users, trends, promoted tweets, the 'tweets' title
-*/
-addStyleSheet(
-  "[data-component-term=user_recommendations] { display: none !important;}",
-  "[data-component-term=trends] {display: none !important;}",
-  ".promoted-tweet {display: none !important;}",
-  ".content-header h2 > .js-stream-title {display: none !important;}",
-  ".content-header > .header-inner {min-height: 5px !important;padding: 0 !important;}");
+function hide(selector) {
+  return selector + " { display: none !important;}";
+}
 
+function main() {
+
+  // hide junk from Twitter
+  var rules = ["[data-component-term=user_recommendations]",
+               "[data-component-term=trends]",
+               "[data-global-action=discover]",
+               ".promoted-tweet",
+               ".content-header h2 > .js-stream-title"].map(hide);
+
+  // tighten up some of the spacing
+  rules.push(".content-header > .header-inner {min-height: 5px !important;padding: 0 !important;}");
+
+  addStyleSheet(rules);
+}
+
+main();
