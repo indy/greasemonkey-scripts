@@ -32,7 +32,7 @@ function addStyleSheet(rules) {
   head.appendChild(style);
 };
 
-function hide(selector) {
+function declareHidden(selector) {
   return selector + " { display: none !important;}";
 }
 
@@ -43,7 +43,7 @@ function main() {
                "[data-component-term=trends]",
                "[data-global-action=discover]",
                ".promoted-tweet",
-               ".content-header h2 > .js-stream-title"].map(hide);
+               ".content-header h2 > .js-stream-title"].map(declareHidden);
 
   // tighten up some of the spacing
   rules.push(".content-header > .header-inner {min-height: 5px !important;padding: 0 !important;}");
