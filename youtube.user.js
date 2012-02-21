@@ -5,6 +5,7 @@
 // @version        0.0.3
 // @description    Removes the annoying recommendations panels from the front page
 // @include        http://www.youtube.com/*
+// @include        https://www.youtube.com/*
 // ==/UserScript==
 
 function combineRules(rules) {
@@ -40,8 +41,16 @@ function removeRecommendedCrap() {
   }
 }
 
+function declareHidden(selector) {
+  return selector + " { display: none !important;}";
+}
+
 function main() {
-  addStyleSheet(["#video-sidebar { display: none;}"]);
+
+  var rules = ["#video-sidebar",
+               "#comments-view"
+              ].map(declareHidden);
+  addStyleSheet(rules);
   removeRecommendedCrap();
 }
 
