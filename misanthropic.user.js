@@ -2,8 +2,8 @@
 // @name           Misanthropic Script
 // @author         Inderjit Gill ( http://indy.io | http://twitter.com/InderjitGill )
 // @namespace      indy.io
-// @version        0.0.1
-// @description    Hide the incoherent ramblings 
+// @version        0.0.3
+// @description    People are stupid, this will hide whatever they write
 // @include        http://*
 // @include        https://*
 // ==/UserScript==
@@ -29,11 +29,13 @@ function declareHidden(selector) {
 }
 
 function main() {
-  var rules = ["#disqus_thread",          // 
-               ".comments",               // the verge, etc
-               "#comments-view"           // youtube
-              ].map(declareHidden);
-  addStyleSheet(rules);
+  var selectors = ["#disqus_thread"];
+
+  if(window.location.host === "www.theverge.com") {
+    selectors.push(".comments");
+  }
+
+  addStyleSheet(selectors.map(declareHidden));
 }
 
 main();
